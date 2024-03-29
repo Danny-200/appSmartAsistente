@@ -14,6 +14,7 @@ export class HomePage {
 
   txtResponse: string='';
   banderaValidando: boolean=false;
+  logginFailed: boolean=false;
 
   grupoLoggin = new FormGroup({
     usuario: new FormControl('danny5', [Validators.required, Validators.minLength(4)]),
@@ -22,10 +23,12 @@ export class HomePage {
 
   constructor(private router: Router, private dataService: DataService) {
     this.txtResponse = '';
+    this.logginFailed = false;
   }
 
   async validarDatosLoggin(){
     this.banderaValidando=true;
+    this.logginFailed = false;
     this.txtResponse = '';
     this.dataService.getData('http://localhost:8080/assistorweb/validarusuario?'
                             +'aliasu='+this.grupoLoggin.controls.usuario.value
@@ -33,14 +36,14 @@ export class HomePage {
                             ).subscribe(response => {
     this.txtResponse = response;
     });
-    await sleep(1000); // Espera 1 segundos
-    console.log("RESPONSE="+this.txtResponse.trim()+"=");
+    await sleep(2000); // Espera 1 segundos
+    console.log("RESPONSE="+this.txtResponse.trim());
     this.banderaValidando=false;
 
     if(this.txtResponse.toLowerCase().trim() === 'Si existe usuario'.toLowerCase() ){
-      
+      this.router.navigate(['/pacientes']); 
     } else {
-
+      this.logginFailed = true;
     }
   }
 
