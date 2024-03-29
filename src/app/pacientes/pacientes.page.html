@@ -10,4 +10,34 @@
       <ion-title size="large">pacientes</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <form>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          
+          <th>Ver</th>
+          <th>Actualizar</th>
+          <th>Borrar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dato of datos">
+          <td>{{ dato.id }}</td>
+          <td>{{ dato.nombre }}</td>
+          
+          <td><ion-button expand="full" (click)="verPaciente(dato.id)">...</ion-button></td>
+          <td><ion-button expand="full" (click)="actualizarPaciente(dato.id)">...</ion-button></td>
+          <td><ion-button expand="full" (click)="borrarPaciente(dato.id)">...</ion-button></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <ion-label expand="full" color="danger" *ngIf="noPacientes">...No existen Pacientes Registrados</ion-label>
+    
+    
+    
+  </form>
 </ion-content>
