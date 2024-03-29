@@ -21,6 +21,7 @@ export class HomePage {
   validarDatosLoggin(){
     alert("usuario ingresado es="+this.grupoLoggin.controls.usuario.value);
     alert("clave ingresado es="+this.grupoLoggin.controls.clave.value);
+    alert("pruebas galo");
   }
 
   crearUsuario(){
