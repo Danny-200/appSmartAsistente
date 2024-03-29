@@ -34,8 +34,14 @@ export class HomePage {
     this.txtResponse = response;
     });
     await sleep(1000); // Espera 1 segundos
-    console.log("RESPONSE 222222="+this.txtResponse);
+    console.log("RESPONSE="+this.txtResponse.trim()+"=");
     this.banderaValidando=false;
+
+    if(this.txtResponse.toLowerCase().trim() === 'Si existe usuario'.toLowerCase() ){
+      
+    } else {
+
+    }
   }
 
   crearUsuario(){
