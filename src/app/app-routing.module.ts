@@ -13,7 +13,23 @@ const routes: Routes = [
   },
   {
     path: 'pacientes',
-    loadChildren: () => import('./pacientes/pacientes.module').then( m => m.PacientesPageModule)
+    loadChildren: () => import('./tabpacientes/pacientes.module').then( m => m.PacientesPageModule)
+  },
+  {
+    path: 'crearpaciente',
+    loadChildren: () => import('./tabcrearpaciente/crearpaciente.module').then( m => m.CrearpacientePageModule)
+  },
+  {
+    path: 'tabinicio',
+    loadChildren: () => import('./tabinicio/tabinicio.module').then( m => m.TabinicioPageModule)
+  },
+  {
+    path: 'tabperfil',
+    loadChildren: () => import('./tabperfil/tabperfil.module').then( m => m.TabperfilPageModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   },
 ];
 

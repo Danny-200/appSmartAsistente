@@ -41,7 +41,7 @@ export class HomePage {
     this.banderaValidando=false;
 
     if(this.txtResponse.toLowerCase().trim() === 'Si existe usuario'.toLowerCase() ){
-      this.router.navigate(['/pacientes']); 
+      this.router.navigate(['/tabs']); 
     } else {
       this.logginFailed = true;
     }
