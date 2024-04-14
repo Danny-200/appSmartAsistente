@@ -47,7 +47,7 @@ export class VerpacientePage implements OnInit {
         if(cargar){
           cargar = false;
           this.datos.push({ 
-            idpacientemedicamento: campos[0], 
+            idpacientemedicamento: campos[0],
             comentario: campos[1], 
             medicamento: campos[2], 
             numerocaja: campos[3], 
@@ -58,6 +58,7 @@ export class VerpacientePage implements OnInit {
           });
         }
         this.horarios.push({ 
+          idpacientemedicamento: campos[0],
           contadordias: campos[8],
           fechaingesta: campos[9],
           horaingesto: campos[10]

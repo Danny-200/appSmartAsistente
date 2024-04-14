@@ -41,7 +41,7 @@
           </ion-label>
           <ion-label>{{ dato.medicamento }}</ion-label>
           <ion-label>
-             <h2>Numero Caja:</h2>
+            <h2>Numero Caja:</h2>
           </ion-label>
           <ion-label>{{ dato.numerocaja }}</ion-label>
           <ion-label>
@@ -69,9 +69,11 @@
             </thead>
             <tbody>
               <tr *ngFor="let horario of horarios">
-                <td>{{ horario.contadordias }}</td>
-                <td>{{ horario.fechaingesta }}</td>
-                <td>{{ horario.horaingesto }}</td>
+                <ng-container *ngIf="horario.idpacientemedicamento == dato.idpacientemedicamento">
+                  <td>{{ horario.contadordias }}</td>
+                  <td>{{ horario.fechaingesta }}</td>
+                  <td>{{ horario.horaingesto }}</td>
+                </ng-container>
               </tr>
             </tbody>
           </table>

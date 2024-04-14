@@ -32,17 +32,8 @@ export class CrearpacientePage {
 
   async registrarDatosPacientes(){
     console.log('registrar DATOS');
-    console.log(this.grupoformulario.controls.nombre.value);
-    console.log(this.grupoformulario.controls.enfermedad.value);
-    console.log(this.grupoformulario.controls.medicina.value);
-    console.log(this.grupoformulario.controls.caja.value);
-    console.log(this.grupoformulario.controls.fechaInicio.value);
-    console.log(this.grupoformulario.controls.dias.value);
-    console.log(this.grupoformulario.controls.tiempo.value);
     this.valor = this.grupoformulario.controls.fechaInicio.value==null ? "" : this.grupoformulario.controls.fechaInicio.value;
     this.fecStringInicial = this.valor.split('T');
-    console.log('---fecha:'+this.fecStringInicial[0]);
-    console.log('---hora:'+this.fecStringInicial[1]);
     this.dataService.getData('http://localhost:8080/assistorweb/crearpacientes?'
                               +'idPaciente=1'
                               +'&medicamentop='+this.grupoformulario.controls.medicina.value
