@@ -28,9 +28,15 @@
           <td>{{ dato.id }}</td>
           <td>{{ dato.nombre }}</td>
           
-          <td><ion-button expand="full" (click)="verPaciente(dato.id)">...</ion-button></td>
-          <td><ion-button expand="full" (click)="actualizarPaciente(dato.id)">...</ion-button></td>
-          <td><ion-button expand="full" (click)="borrarPaciente(dato.id)">...</ion-button></td>
+          <td><ion-button expand="full" (click)="verPaciente(dato.id)">
+            <ion-icon name="eye-outline"></ion-icon>
+          </ion-button></td>
+          <td><ion-button expand="full" (click)="actualizarPaciente(dato.id)">
+            <ion-icon name="construct-outline"></ion-icon>
+          </ion-button></td>
+          <td><ion-button expand="full" (click)="borrarPaciente(dato.id)">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button></td>
         </tr>
       </tbody>
     </table>

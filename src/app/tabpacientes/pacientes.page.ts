@@ -8,11 +8,10 @@ import { sleep } from '../app.module';
   templateUrl: './pacientes.page.html',
   styleUrls: ['./pacientes.page.scss'],
 })
-export class PacientesPage  {
 
+export class PacientesPage  {
   noPacientes: boolean=true;
   txtResponse: string='';
-
   datos: any[] = [];
 
   constructor(private router: Router, private dataService: DataService) {
@@ -32,7 +31,6 @@ export class PacientesPage  {
     let registros= texto.split(';');
     for(var contadorA = 0; contadorA < registros.length; contadorA++){
       if(registros[contadorA].length>0){
- 
         let campos = registros[contadorA].split('-');
         this.datos.push({ id: campos[0], nombre: campos[1] });
       }
@@ -41,6 +39,7 @@ export class PacientesPage  {
 
   verPaciente(codigo :number){
     console.log("verPaciente con codigo="+codigo);
+    this.router.navigate(['/verpaciente']);
   }
 
   actualizarPaciente(codigo :number){
