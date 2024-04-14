@@ -50,10 +50,6 @@
           </ion-card-header>
           <ion-card-content>
             <ion-label>
-              <h2>Fecha y Hora de Inicio:</h2>
-            </ion-label>
-            <ion-datetime id="datetime" formControlName="fechaInicio"></ion-datetime>
-            <ion-label>
               <h2>Por cuántos Días:</h2>
             </ion-label>
             <ion-input type="number" label="Por cuántos Días" label-placement="floating" fill="solid"
@@ -63,10 +59,11 @@
             </ion-label>
             <ion-input type="number" label="Cada cuánto tiempo" label-placement="floating" fill="solid"
               placeholder="Cada cuánto tiempo" formControlName="tiempo" min="0"></ion-input>
+            <ion-label>
+              <h2>Fecha y Hora de Inicio:</h2>
+            </ion-label>
+            <ion-datetime id="datetime" formControlName="fechaInicio"></ion-datetime>
           </ion-card-content>
-          <!--
-          <ion-button [disabled]="!formulario.valid" expand="block" (click)="guardar()">Guardar</ion-button>
-          -->
           <ion-button expand="full" type="submit" [disabled]="!grupoformulario.valid">Grabar Paciente</ion-button>
         </ion-card>
       </div>

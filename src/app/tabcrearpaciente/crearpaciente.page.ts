@@ -44,7 +44,7 @@ export class CrearpacientePage {
     console.log('---fecha:'+this.fecStringInicial[0]);
     console.log('---hora:'+this.fecStringInicial[1]);
     this.dataService.getData('http://localhost:8080/assistorweb/crearpacientes?'
-                              +'nombrep='+this.grupoformulario.controls.nombre.value
+                              +'idPaciente=1'
                               +'&medicamentop='+this.grupoformulario.controls.medicina.value
                               +'&comentariop='+this.grupoformulario.controls.enfermedad.value
                               +'&numerocajap='+this.grupoformulario.controls.caja.value
@@ -57,6 +57,7 @@ export class CrearpacientePage {
       this.txtResponse = response;
     });
     console.log("RESPONSE="+this.txtResponse.trim());
+    this.siguiente();
   }
 /*
   async mostrarAlerta(titulo: string, mensaje: string) {
@@ -69,7 +70,7 @@ export class CrearpacientePage {
   }
 */
   siguiente(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/tabs/tabinicio']);
   }
 
 }

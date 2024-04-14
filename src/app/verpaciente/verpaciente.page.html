@@ -25,47 +25,56 @@
         </ion-card-content>
       </ion-card>
     </div>
-  </div>
-  <div>
     <div class="datos">
       <ion-card>
         <ion-card-header>
           <ion-card-title>Datos del Medicamento</ion-card-title>
         </ion-card-header>
-        <ion-card-content>
+
+        <ion-card-content *ngFor="let dato of datos">
           <ion-label>
             <h2>Nombre de la Enfermedad:</h2>
           </ion-label>
-          <ion-input type="text" label="Nombre de la Enfermedad" label-placement="floating" fill="outline"
-            placeholder="Enfermedad" ></ion-input>
+          <ion-label>{{ dato.comentario }}</ion-label>
           <ion-label>
             <h2>Nombre del Medicamento:</h2>
           </ion-label>
-          <ion-input type="text" label="Nombre del Medicamento" label-placement="floating" fill="outline"
-            placeholder="Medicamento"></ion-input>
-            <ion-label>
-              <h2>Nombre del Medicamento:</h2>
-            </ion-label>
-            <ion-input type="text" label="Numero Caja" label-placement="floating" fill="outline"
-              placeholder="Caja"></ion-input>
+          <ion-label>{{ dato.medicamento }}</ion-label>
+          <ion-label>
+             <h2>Numero Caja:</h2>
+          </ion-label>
+          <ion-label>{{ dato.numerocaja }}</ion-label>
           <ion-label>
             <h2>Por cuántos Días:</h2>
           </ion-label>
-          <ion-input type="number" label="Por cuántos Días" label-placement="floating" fill="solid"
-            placeholder="Días"min="0"></ion-input>
+          <ion-label>{{ dato.numerodias }}</ion-label>
           <ion-label>
             <h2>Cada cuánto tiempo:</h2>
           </ion-label>
-          <ion-input type="number" label="Cada cuánto tiempo" label-placement="floating" fill="solid"
-            placeholder="Cada cuanto"min="0"></ion-input>
+          <ion-label>{{ dato.frecuencia }}</ion-label>
           <ion-label>
              <h2>Fecha y Hora de Inicio:</h2>
           </ion-label>
-          <ion-input type="text" label="Fecha y Hora de Inicio" label-placement="floating" fill="outline"
-            placeholder="Fecha y Hora"></ion-input>
+          <ion-label>{{ dato.fechainicio }} / {{ dato.horainicio }}</ion-label>
           <ion-label>
             <h2>Horario:</h2>
           </ion-label>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Día</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let horario of horarios">
+                <td>{{ horario.contadordias }}</td>
+                <td>{{ horario.fechaingesta }}</td>
+                <td>{{ horario.horaingesto }}</td>
+              </tr>
+            </tbody>
+          </table>
         </ion-card-content>
       </ion-card>
     </div>
