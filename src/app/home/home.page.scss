@@ -1,0 +1,44 @@
+ion-title {
+  --color: #1ec2b4;
+}
+
+ion-item {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.img{
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img{
+  width: 250px;
+}
+
+ion-input {
+  --padding-start: 40px;
+}
+
+.btn{
+  width: 430px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  #ing{
+    width: 375px;
+  }
+
+  #olv{
+    width: 375px;
+  }
+}
+
+ion-content {
+  width: 432px;
+  height: 932px;
+}

@@ -1,0 +1,40 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar mode="ios">
+    <ion-title>
+      Iniciar Sesión
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button expand="full" (click)="crearUsuario()">
+        Registarse
+        <ion-icon name="chevron-forward"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div class="img">
+    <img src="assets/img/medicamento.gif" alt="Imagen">
+  </div>
+
+  <form [formGroup]="grupoLoggin" (ngSubmit)="validarDatosLoggin()">
+    <ion-list>
+      <ion-item>
+        <ion-input formControlName="usuario" label="Usuario:" labelPlacement="floating" fill="solid"
+          placeholder="Inresar Usuario" required="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="clave" required="true" label="Clave:" labelPlacement="floating" fill="solid"
+          placeholder="Enter text"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-label expand="full" color="danger" *ngIf="logginFailed">* Usuario y/o clave incorrectos</ion-label>
+    <div class="btn">
+      <ion-button type="submit" [disabled]="!grupoLoggin.valid || banderaValidando" id="ing">Ingresar</ion-button>
+      <ion-button (click)="olvideClave()" fill="clear" id="olv">Olvide mi Clave</ion-button>
+    </div>
+  </form>
+</ion-content>

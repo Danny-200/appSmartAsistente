@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Pacientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">pacientes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          
+          <th>Ver</th>
+          <th>Actualizar</th>
+          <th>Borrar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dato of datos">
+          <td>{{ dato.id }}</td>
+          <td>{{ dato.nombre }}</td>
+          
+          <td><ion-button expand="full" (click)="verPaciente(dato.id)">
+            <ion-icon name="eye-outline"></ion-icon>
+          </ion-button></td>
+          <td><ion-button expand="full" (click)="actualizarPaciente(dato.id)">
+            <ion-icon name="construct-outline"></ion-icon>
+          </ion-button></td>
+          <td><ion-button expand="full" (click)="borrarPaciente(dato.id)">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <ion-label expand="full" color="danger" *ngIf="noPacientes">...No existen Pacientes Registrados</ion-label>
+    
+    
+    
+  </form>
+</ion-content>
