@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Crear Nuevo Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="grupoformulario" (ngSubmit)="crearUsuario()">
+    <div>
+      <div class="datos">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Datos del Paciente</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-label>
+              <h2>Cédula:</h2>
+            </ion-label>
+            <ion-input type="text" pattern="^[0-9]+" label-placement="floating" fill="outline" formControlName="cedulaU"></ion-input>
+            <ion-label>
+              <h2>Nombre:</h2>
+            </ion-label>
+            <ion-input type="text" label-placement="floating" fill="outline" formControlName="nombreU"></ion-input>
+            <ion-label>
+              <h2>Apellido:</h2>
+            </ion-label>
+            <ion-input type="text" label-placement="floating" fill="outline" formControlName="apellidoU"></ion-input>
+            <ion-label>
+              <h2>Alias:</h2>
+            </ion-label>
+            <ion-input type="text" label-placement="floating" fill="outline" formControlName="aliasU"></ion-input>
+            <ion-label>
+              <h2>Clave:</h2>
+            </ion-label>
+            <ion-input type="text" label-placement="floating" fill="outline" formControlName="claveU"></ion-input>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <ion-label expand="full" color="danger" *ngIf="crearUsuarioFailed">{{ msgErrorUsuario }}</ion-label>
+      <ion-button expand="full" type="submit" [disabled]="!grupoformulario.valid">Crear Usuario</ion-button>
+    </div>
+  </form>
+</ion-content>

@@ -17,8 +17,8 @@ export class HomePage {
   logginFailed: boolean=false;
 
   grupoLoggin = new FormGroup({
-    usuario: new FormControl('danny5', [Validators.required, Validators.minLength(4)]),
-    clave: new FormControl('dannyx', [Validators.required, Validators.minLength(5)])
+    usuario: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    clave: new FormControl('', [Validators.required, Validators.minLength(5)])
   });
 
   constructor(private router: Router, private dataService: DataService) {
@@ -36,7 +36,7 @@ export class HomePage {
                             ).subscribe(response => {
     this.txtResponse = response;
     });
-    await sleep(2000); // Espera 1 segundos
+    await sleep(4000); // Espera 1 segundos
     console.log("RESPONSE="+this.txtResponse.trim());
     this.banderaValidando=false;
 
@@ -46,9 +46,8 @@ export class HomePage {
       this.logginFailed = true;
     }
   }
-
   crearUsuario(){
-    alert('redireccionar a formulario crear usuario');
+    this.router.navigate(['/crearusuario']); 
   }
 
   olvideClave(){

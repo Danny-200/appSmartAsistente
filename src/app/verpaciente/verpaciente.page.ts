@@ -24,7 +24,7 @@ export class VerpacientePage implements OnInit {
 
   async consultarPacienteById(){
     this.dataService.getData('http://localhost:8080/assistorweb/verpaciente?'
-                              +'idpaciente=1'
+                              +'idpaciente=0107582884'
                             ).subscribe(response => {
       this.txtResponse = response;
     });

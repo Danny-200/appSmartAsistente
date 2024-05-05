@@ -16,7 +16,7 @@ export class CrearpacientePage {
   txtResponse: string='';
   logginFailed: boolean=false;
   grupoformulario = new FormGroup({
-    nombre: new FormControl('nombre', [Validators.required, Validators.minLength(4)]),
+    cedula: new FormControl('cedula', [Validators.required, Validators.minLength(4)]),
     enfermedad: new FormControl('enfermedad', [Validators.required, Validators.minLength(5)]),
     medicina: new FormControl('medicina', [Validators.required, Validators.minLength(5)]),
     caja: new FormControl('caja', [Validators.required, Validators.minLength(1)]),
@@ -35,7 +35,7 @@ export class CrearpacientePage {
     this.valor = this.grupoformulario.controls.fechaInicio.value==null ? "" : this.grupoformulario.controls.fechaInicio.value;
     this.fecStringInicial = this.valor.split('T');
     this.dataService.getData('http://localhost:8080/assistorweb/crearpacientes?'
-                              +'idPaciente=1'
+                              +'idPaciente='+this.grupoformulario.controls.cedula.value
                               +'&medicamentop='+this.grupoformulario.controls.medicina.value
                               +'&comentariop='+this.grupoformulario.controls.enfermedad.value
                               +'&numerocajap='+this.grupoformulario.controls.caja.value

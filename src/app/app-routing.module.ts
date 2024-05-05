@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'verpaciente',
     loadChildren: () => import('./verpaciente/verpaciente.module').then( m => m.VerpacientePageModule)
   },
+  {
+    path: 'crearusuario',
+    loadChildren: () => import('./crearusuario/crearusuario.module').then( m => m.CrearusuarioPageModule)
+  },
 ];
 
 @NgModule({
