@@ -3,6 +3,7 @@ import { FormGroup, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../servicios/data.service';
+import { sleep } from '../app.module';
 
 @Component({
   selector: 'app-crearpaciente',
@@ -11,30 +12,31 @@ import { DataService } from '../servicios/data.service';
 })
 
 export class CrearpacientePage {
+  msgErrorUsuario: string='Error al crear Horario';
   valor: string="";
   fecStringInicial: string[] = [];
   txtResponse: string='';
-  logginFailed: boolean=false;
+  crearHorarioFailed: boolean=false;
   grupoformulario = new FormGroup({
-    cedula: new FormControl('cedula', [Validators.required, Validators.minLength(4)]),
-    enfermedad: new FormControl('enfermedad', [Validators.required, Validators.minLength(5)]),
-    medicina: new FormControl('medicina', [Validators.required, Validators.minLength(5)]),
-    caja: new FormControl('caja', [Validators.required, Validators.minLength(1)]),
-    fechaInicio: new FormControl('fechaInicio', [Validators.required, Validators.minLength(5)]),
-    dias: new FormControl('dias', [Validators.required, Validators.minLength(1)]),
-    tiempo: new FormControl('tiempo', [Validators.required, Validators.minLength(1)])
+    cedula: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    enfermedad: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    medicina: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    caja: new FormControl('', [Validators.required, Validators.minLength(1)]),
+    fechaInicio: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    dias: new FormControl('', [Validators.required, Validators.minLength(1)]),
+    tiempo: new FormControl('', [Validators.required, Validators.minLength(1)])
   });
 
   constructor(private router: Router, private dataService: DataService) {
     this.txtResponse = '';
-    this.logginFailed = false;
+    this.crearHorarioFailed = false;
   }
 
   async registrarDatosPacientes(){
     console.log('registrar DATOS');
     this.valor = this.grupoformulario.controls.fechaInicio.value==null ? "" : this.grupoformulario.controls.fechaInicio.value;
     this.fecStringInicial = this.valor.split('T');
-    this.dataService.getData('http://localhost:8080/assistorweb/crearpacientes?'
+    this.dataService.getData('http://localhost:8080/assistorweb/crearhorario?'
                               +'idPaciente='+this.grupoformulario.controls.cedula.value
                               +'&medicamentop='+this.grupoformulario.controls.medicina.value
                               +'&comentariop='+this.grupoformulario.controls.enfermedad.value
@@ -47,8 +49,16 @@ export class CrearpacientePage {
                             ).subscribe(response => {
       this.txtResponse = response;
     });
-    console.log("RESPONSE="+this.txtResponse.trim());
-    this.siguiente();
+    await sleep(4000); // Espera 1 segundos
+    console.log("Response Crear USUARIO="+this.txtResponse.trim());
+
+    if(this.txtResponse.toLowerCase().trim() === 'OK'.toLowerCase() ){
+      this.crearHorarioFailed = false;
+      this.siguiente();
+    } else {
+      this.msgErrorUsuario = this.txtResponse.trim();
+      this.crearHorarioFailed = true;
+    }
   }
 /*
   async mostrarAlerta(titulo: string, mensaje: string) {
@@ -61,7 +71,7 @@ export class CrearpacientePage {
   }
 */
   siguiente(){
-    this.router.navigate(['/tabs/tabinicio']);
+    this.router.navigate(['/tabs/tabpacientes']);
   }
 
 }

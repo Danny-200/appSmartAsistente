@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Crear paciente</ion-title>
+    <ion-title>Formulario Agregar Paciente - Horario</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,31 +10,21 @@
       <div class="datos">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>Datos del Paciente</ion-card-title>
+            <ion-card-title>Paciente</ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <ion-label>
-              <h2>Cédula:</h2>
+              <h2>Número de Cédula:</h2>
             </ion-label>
-            <ion-input type="text" label="Numero de Cédula" label-placement="floating" fill="outline" formControlName="cedula"
-              placeholder="Cedula"></ion-input>
-
-              <ion-label>
-                <h2>Nombre:</h2>
-              </ion-label>
-              <ion-input type="text" label="Nombre Paciente" label-placement="floating" fill="outline" formControlName="nombrePaciente"
-                placeholder="Nombre del Paciente"></ion-input>
-
+            <ion-input type="text" fill="outline" formControlName="cedula"></ion-input>
             <ion-label>
               <h2>Nombre de la Enfermedad:</h2>
             </ion-label>
-            <ion-input type="text" label="Nombre de la Enfermedad" label-placement="floating" fill="outline"
-              placeholder="Nombre de la Enfermedad" formControlName="enfermedad"></ion-input>
+            <ion-input type="text" fill="outline" formControlName="enfermedad"></ion-input>
             <ion-label>
               <h2>Nombre del Medicamento:</h2>
             </ion-label>
-            <ion-input type="text" label="Nombre del Medicamento" label-placement="floating" fill="outline"
-              placeholder="Nombre del Medicamento" formControlName="medicina"></ion-input>
+            <ion-input type="text" fill="outline" formControlName="medicina"></ion-input>
             <ion-label>
               <h2>Numero de Caja:</h2>
             </ion-label>
@@ -43,6 +33,8 @@
                 <ion-select-option value="1">Caja 1</ion-select-option>
                 <ion-select-option value="2">Caja 2</ion-select-option>
                 <ion-select-option value="3">Caja 3</ion-select-option>
+                <ion-select-option value="4">Caja 4</ion-select-option>
+                <ion-select-option value="5">Caja 5</ion-select-option>
               </ion-select>
             </ion-item>
           </ion-card-content>
@@ -59,19 +51,18 @@
             <ion-label>
               <h2>Por cuántos Días:</h2>
             </ion-label>
-            <ion-input type="number" label="Por cuántos Días" label-placement="floating" fill="solid"
-              placeholder="Por cuántos Días" formControlName="dias" min="0"></ion-input>
+            <ion-input type="number" fill="solid" formControlName="dias" min="0"></ion-input>
             <ion-label>
               <h2>Cada cuánto tiempo:</h2>
             </ion-label>
-            <ion-input type="number" label="Cada cuánto tiempo" label-placement="floating" fill="solid"
-              placeholder="Cada cuánto tiempo" formControlName="tiempo" min="0"></ion-input>
+            <ion-input type="number" fill="solid" formControlName="tiempo" min="0"></ion-input>
             <ion-label>
               <h2>Fecha y Hora de Inicio:</h2>
             </ion-label>
             <ion-datetime id="datetime" formControlName="fechaInicio"></ion-datetime>
           </ion-card-content>
-          <ion-button expand="full" type="submit" [disabled]="!grupoformulario.valid">Grabar Paciente</ion-button>
+          <ion-label expand="full" color="danger" *ngIf="crearHorarioFailed">{{ msgErrorUsuario }}</ion-label>
+          <ion-button expand="full" type="submit" [disabled]="!grupoformulario.valid">Registrar Horario</ion-button>
         </ion-card>
       </div>
     </div>

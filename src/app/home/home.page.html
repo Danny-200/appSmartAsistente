@@ -22,6 +22,8 @@
     <ion-label expand="full" color="danger" *ngIf="logginFailed">* Usuario y/o clave incorrectos</ion-label>
     <ion-button expand="full" type="submit" [disabled]="!grupoLoggin.valid || banderaValidando">Ingresar</ion-button>
     <ion-button expand="full" (click)="crearUsuario()">Crear Usuario</ion-button>
+    <!--
     <ion-button expand="full" (click)="olvideClave()">Olvide mi Clave</ion-button>
+    -->
   </form>
 </ion-content>

@@ -1,13 +1,48 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>pantalla tabinicio</ion-title>
+    <ion-title>Formulario Crear Paciente</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">pantalla tab inicio</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <form [formGroup]="grupoformulario" (ngSubmit)="crearPaciente()">
+    <div>
+      <div class="datos">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Datos del Paciente</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-label>
+              <h2>Cédula:</h2>
+            </ion-label>
+            <ion-input type="text" pattern="^[0-9]+" label-placement="floating" fill="outline" formControlName="cedulaP"></ion-input>
+            <ion-label>
+              <h2>Nombre:</h2>
+            </ion-label>
+            <ion-input type="text" label-placement="floating" fill="outline" formControlName="nombreP"></ion-input>
+            <ion-label>
+              <h2>Apellido:</h2>
+            </ion-label>
+            <ion-input type="text" label-placement="floating" fill="outline" formControlName="apellidoP"></ion-input>
+            <ion-label>
+              <h2>Edad:</h2>
+            </ion-label>
+            <ion-input type="text" label-placement="floating" fill="outline" formControlName="edadP"></ion-input>
+            <ion-label>
+              <h2>Genero:</h2>
+            </ion-label>
+            <ion-item>
+              <ion-select formControlName="generoP">
+                <ion-select-option value="F">FEMENINO</ion-select-option>
+                <ion-select-option value="M">MASCULINO</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <ion-label expand="full" color="danger" *ngIf="crearUsuarioFailed">{{ msgErrorUsuario }}</ion-label>
+      <ion-button expand="full" type="submit" [disabled]="!grupoformulario.valid">Crear Paciente</ion-button>
+    </div>
+  </form>
 </ion-content>

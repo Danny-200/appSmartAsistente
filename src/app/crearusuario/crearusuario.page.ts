@@ -47,8 +47,6 @@ export class CrearusuarioPage implements OnInit {
       this.msgErrorUsuario = this.txtResponse.trim();
       this.crearUsuarioFailed = true;
     }
-
-    
   }
 
   siguiente() {
