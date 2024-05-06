@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { DataService } from '../servicios/data.service';
 import { sleep } from '../app.module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-verpaciente',
@@ -10,12 +10,14 @@ import { sleep } from '../app.module';
 })
 
 export class VerpacientePage implements OnInit {
+  infoPaciente: string='';
   noPacientes: boolean=true;
   txtResponse: string='';
   datos: any[] = [];
   horarios: any[] = [];
 
   constructor(private router: Router, private dataService: DataService) {
+    this.infoPaciente = this.dataService.parameterCedula + ' ' +this.dataService.parameterNombrePaciente;
     this.consultarPacienteById();
   }
 
@@ -24,12 +26,12 @@ export class VerpacientePage implements OnInit {
 
   async consultarPacienteById(){
     this.dataService.getData('http://localhost:8080/assistorweb/verpaciente?'
-                              +'idpaciente=0107582884'
+                              +'idpaciente='+this.dataService.parameterCedula
                             ).subscribe(response => {
       this.txtResponse = response;
     });
     await sleep(2000); // Espera 1 segundos
-    console.log("RESPONSE="+this.txtResponse.trim());
+    console.log("Response consulta paciente="+this.txtResponse.trim());
     this.cargarDatos(this.txtResponse.trim());
   }
 

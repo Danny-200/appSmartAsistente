@@ -1,15 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Detalle Paciente</ion-title>
+    <ion-title>Horario - Paciente</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">ver paciente</ion-title>
-    </ion-toolbar>
-  </ion-header>
   <div>
     <div class="datos">
       <ion-card>
@@ -18,10 +13,9 @@
         </ion-card-header>
         <ion-card-content>
           <ion-label>
-            <h2>Nombre:</h2>
+            <h2>Paciente:</h2>
           </ion-label>
-          <ion-input type="text" label="Nombre del Paciente" label-placement="floating" fill="outline" 
-            placeholder="Nombre"></ion-input>
+          <ion-input type="text" label-placement="floating" fill="outline" value={{infoPaciente}}></ion-input>
         </ion-card-content>
       </ion-card>
     </div>

@@ -23,7 +23,7 @@ export class PacientesPage  {
       this.txtResponse = response;
     });
     await sleep(2000); // Espera 1 segundos
-    console.log("RESPONSE="+this.txtResponse.trim());
+    console.log("Response lista de usuarios="+this.txtResponse.trim());
     this.cargarDatos(this.txtResponse.trim());
   }
 
@@ -37,8 +37,10 @@ export class PacientesPage  {
     }
   }
 
-  verPaciente(codigo :number){
-    console.log("verPaciente con codigo="+codigo);
+  verPaciente(paramCedula: number, paramNombre: string){
+    console.log("verPaciente con codigo="+paramCedula);
+    this.dataService.parameterCedula = paramCedula;
+    this.dataService.parameterNombrePaciente = paramNombre;
     this.router.navigate(['/verpaciente']);
   }
 

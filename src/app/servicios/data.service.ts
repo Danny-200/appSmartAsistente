@@ -7,6 +7,10 @@ import { Observable } from 'rxjs';
 })
 
 export class DataService {
+
+  public parameterCedula: any;
+  public parameterNombrePaciente: any;
+
   constructor(private http: HttpClient) { }
 
   getData(metodo: string): Observable<string> {
