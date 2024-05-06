@@ -1,13 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>pantalla tabinicio</ion-title>
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar mode="ios">
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">pantalla tab inicio</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content >
+  <div class="robot">
+    <ion-text *ngIf="showMessage" class="message">{{ message }}</ion-text>
+    <div class="face"></div>
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="left-hand"></div>
+    <div class="right-hand"></div>
+    <div class="eye1"></div>
+    <div class="eye2"></div>
+  </div>
 </ion-content>
+
