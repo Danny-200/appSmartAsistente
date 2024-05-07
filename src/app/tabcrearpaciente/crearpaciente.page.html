@@ -59,7 +59,7 @@
             <ion-label>
               <h2>Fecha y Hora de Inicio:</h2>
             </ion-label>
-            <ion-datetime id="datetime" formControlName="fechaInicio"></ion-datetime>
+            <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="fechaActual" id="datetime" formControlName="fechaInicio"></ion-datetime>
           </ion-card-content>
           <ion-label expand="full" color="danger" *ngIf="crearHorarioFailed">{{ msgErrorUsuario }}</ion-label>
           <ion-button expand="full" type="submit" [disabled]="!grupoformulario.valid">Registrar Horario</ion-button>

@@ -17,6 +17,7 @@ export class CrearpacientePage {
   fecStringInicial: string[] = [];
   txtResponse: string='';
   crearHorarioFailed: boolean=false;
+  fechaActual: string;
   grupoformulario = new FormGroup({
     cedula: new FormControl('', [Validators.required, Validators.minLength(4)]),
     enfermedad: new FormControl('', [Validators.required, Validators.minLength(5)]),
@@ -30,6 +31,8 @@ export class CrearpacientePage {
   constructor(private router: Router, private dataService: DataService) {
     this.txtResponse = '';
     this.crearHorarioFailed = false;
+    const fecha = new Date();
+    this.fechaActual = fecha.toISOString().slice(0, 16);
   }
 
   async registrarDatosPacientes(){

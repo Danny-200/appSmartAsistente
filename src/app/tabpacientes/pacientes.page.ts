@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../servicios/data.service';
 import { sleep } from '../app.module';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pacientes',
@@ -14,7 +15,12 @@ export class PacientesPage  {
   txtResponse: string='';
   datos: any[] = [];
 
-  constructor(private router: Router, private dataService: DataService) {
+  constructor(private router: Router, private dataService: DataService, private navCtrl: NavController) {
+    this.consultarPaciente();
+  }
+
+  ionViewWillEnter() {
+    this.datos = [];
     this.consultarPaciente();
   }
 
@@ -24,7 +30,12 @@ export class PacientesPage  {
     });
     await sleep(2000); // Espera 1 segundos
     console.log("Response lista de usuarios="+this.txtResponse.trim());
-    this.cargarDatos(this.txtResponse.trim());
+    if(this.txtResponse.toLowerCase().trim().length>0){
+      this.cargarDatos(this.txtResponse.trim());
+      this.noPacientes = false;
+    } else {
+      this.noPacientes = true;
+    }
   }
 
   cargarDatos(texto :string){
