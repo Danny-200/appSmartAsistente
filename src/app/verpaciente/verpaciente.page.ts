@@ -10,14 +10,16 @@ import { Router } from '@angular/router';
 })
 
 export class VerpacientePage implements OnInit {
-  infoPaciente: string='';
+  cedPaciente: string='';
+  namPaciente: string = '';
   noPacientes: boolean=true;
   txtResponse: string='';
   datos: any[] = [];
   horarios: any[] = [];
 
   constructor(private router: Router, private dataService: DataService) {
-    this.infoPaciente = this.dataService.parameterCedula + ' ' +this.dataService.parameterNombrePaciente;
+    this.cedPaciente = this.dataService.parameterCedula /*+ ' ' +this.dataService.parameterNombrePaciente*/;
+    this.namPaciente = this.dataService.parameterNombrePaciente;
     this.consultarPacienteById();
   }
 
@@ -36,6 +38,8 @@ export class VerpacientePage implements OnInit {
   }
 
   cargarDatos(texto :string){
+    this.datos = [];
+    this.horarios = [];
     var cargar = false;
     var idPaciente = '';
     let registros = texto.split(';');

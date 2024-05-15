@@ -1,5 +1,5 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar mode="ios">
     <ion-title>Formulario Crear Paciente</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,39 +10,33 @@
       <div class="datos">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>Datos del Paciente</ion-card-title>
+            <ion-card-title>
+              <ion-icon name="person-add"></ion-icon>
+              Datos del Paciente
+            </ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <ion-label>
-              <h2>Cédula:</h2>
-            </ion-label>
-            <ion-input type="text" pattern="^[0-9]+" label-placement="floating" fill="outline" formControlName="cedulaP"></ion-input>
-            <ion-label>
-              <h2>Nombre:</h2>
-            </ion-label>
-            <ion-input type="text" label-placement="floating" fill="outline" formControlName="nombreP"></ion-input>
-            <ion-label>
-              <h2>Apellido:</h2>
-            </ion-label>
-            <ion-input type="text" label-placement="floating" fill="outline" formControlName="apellidoP"></ion-input>
-            <ion-label>
-              <h2>Edad:</h2>
-            </ion-label>
-            <ion-input type="text" label-placement="floating" fill="outline" formControlName="edadP"></ion-input>
-            <ion-label>
-              <h2>Genero:</h2>
-            </ion-label>
+            <ion-input label="Cédula:" type="text" maxlength="11"
+             pattern="^[0-9]+" label-placement="floating" mode="md" fill="outline" formControlName="cedulaP"></ion-input>
+            <br> 
+            <ion-input label="Nombre:" type="text" label-placement="floating" fill="outline" mode="md" formControlName="nombreP"></ion-input>
+            <br>
+            <ion-input label="Apellido:" type="text" label-placement="floating" fill="outline" mode="md" formControlName="apellidoP"></ion-input>
+            <br>
+            <ion-input label="Edad:" type="number" label-placement="floating" fill="outline" mode="md" formControlName="edadP"></ion-input>
+            <br>
             <ion-item>
-              <ion-select formControlName="generoP">
-                <ion-select-option value="F">FEMENINO</ion-select-option>
-                <ion-select-option value="M">MASCULINO</ion-select-option>
+              <ion-select formControlName="generoP" label="Genero:" label-placement="floating" fill="outline" mode="ios" interface="action-sheet">
+                <ion-select-option value="F">Femenino</ion-select-option>
+                <ion-select-option value="M">Masculino</ion-select-option>
+                <ion-select-option value="O">Otro</ion-select-option>
               </ion-select>
             </ion-item>
           </ion-card-content>
         </ion-card>
       </div>
       <ion-label expand="full" color="danger" *ngIf="crearUsuarioFailed">{{ msgErrorUsuario }}</ion-label>
-      <ion-button expand="full" type="submit" [disabled]="!grupoformulario.valid">Crear Paciente</ion-button>
+      <ion-button expand="block" type="submit" [disabled]="!grupoformulario.valid" >Crear Paciente</ion-button>
     </div>
   </form>
 </ion-content>

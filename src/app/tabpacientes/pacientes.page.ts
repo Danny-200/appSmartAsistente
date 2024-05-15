@@ -16,15 +16,14 @@ export class PacientesPage  {
   datos: any[] = [];
 
   constructor(private router: Router, private dataService: DataService, private navCtrl: NavController) {
-    this.consultarPaciente();
   }
 
   ionViewWillEnter() {
-    this.datos = [];
     this.consultarPaciente();
   }
 
   async consultarPaciente(){
+    this.datos = [];
     this.dataService.getData('http://localhost:8080/assistorweb/listarpacientes').subscribe(response => {
       this.txtResponse = response;
     });
@@ -55,12 +54,25 @@ export class PacientesPage  {
     this.router.navigate(['/verpaciente']);
   }
 
-  actualizarPaciente(codigo :number){
-    console.log("actualizarPaciente con codigo="+codigo);
+  actualizarPaciente(paramCedula :number){
+    console.log("actualizarPaciente con codigo="+paramCedula);
   }
 
-  borrarPaciente(codigo :number){
-    console.log("borrar Paciente con codigo="+codigo);
+  borrarPaciente(paramCedula :number){
+    console.log("borrar Paciente con cedula="+paramCedula);
+    this.eliminarPaciente(paramCedula);
   }
 
+  async eliminarPaciente(paramCedula :number){
+    this.dataService.getData('http://localhost:8080/assistorweb/eliminarpaciente?'
+                            +'cedulaP='+paramCedula
+                            ).subscribe(response => {
+      this.txtResponse = response;
+    });
+    await sleep(2000); // Espera 1 segundos
+    console.log("Response eliminar paciente="+this.txtResponse.trim());
+    if(this.txtResponse.toLowerCase().trim().length>0){
+      this.consultarPaciente();
+    }
+  }
 }

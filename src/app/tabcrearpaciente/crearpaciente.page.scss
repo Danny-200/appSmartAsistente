@@ -13,8 +13,8 @@ ion-content {
 
         ion-card {
             text-align: left;
-            --background:  #f4f6f7;
-            box-shadow: 5px 5px 5px  #154360;
+            --background:  #ffffff;
+            box-shadow: 5px 5px 5px;
             border:  #7b7d7d 0.5px solid;
 
             ion-card-title {
@@ -38,17 +38,14 @@ ion-content {
                 margin-bottom: 16px;
             }
         }
-        ion-button {
-            --background: #3880ff;
-        }
     }
 
     .horario{
         text-align: center;
         ion-card {
             text-align: left;
-            --background:  #f4f6f7;
-            box-shadow: 5px 5px 5px  #154360;
+            --background:  #ffffff;
+            box-shadow: 5px 5px 5px;
             border:  #7b7d7d 0.5px solid;
 
             ion-card-title {
@@ -76,6 +73,11 @@ ion-content {
             h2{
                 margin-bottom: 16px;
             }
+        }
+
+        ion-button {
+            width: 92%;
+            margin-left: 16px;
         }
     }
 }

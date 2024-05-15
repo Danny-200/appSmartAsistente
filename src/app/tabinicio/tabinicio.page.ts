@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../servicios/data.service';
 import { sleep } from '../app.module';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tabinicio',
@@ -14,6 +15,8 @@ export class TabinicioPage implements OnInit {
   msgErrorUsuario: string='Error al crear Usuario';
   txtResponse: string='';
   crearUsuarioFailed: boolean = false;
+
+  cedula: string='';
   
   grupoformulario = new FormGroup({
     cedulaP: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
@@ -23,7 +26,7 @@ export class TabinicioPage implements OnInit {
     generoP: new FormControl('', [Validators.required]),
   });
 
-  constructor(private router: Router, private dataService: DataService) { }
+  constructor(private router: Router, private dataService: DataService, private control: NavController) { }
 
   async crearPaciente() {
     this.dataService.getData('http://localhost:8080/assistorweb/crearpacientes?'

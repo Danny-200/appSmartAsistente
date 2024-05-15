@@ -15,64 +15,105 @@
           <ion-label>
             <h2>Paciente:</h2>
           </ion-label>
-          <ion-input type="text" label-placement="floating" fill="outline" value={{infoPaciente}}></ion-input>
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="4">
+                <ion-list>
+                  <ion-item>
+                    <ion-label>Cédula:</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>Nombre:</ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-col>
+              <ion-col size="8">
+                <ion-list>
+                  <ion-item>
+                    <ion-label>{{cedPaciente}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>{{namPaciente}}</ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+    <!--  <ion-input type="text" label-placement="floating" fill="outline" value={{cedPaciente}} disabled></ion-input>  -->
         </ion-card-content>
       </ion-card>
     </div>
     <div class="datos">
       <ion-card>
-        <ion-card-header>
-          <ion-card-title>Datos del Medicamento</ion-card-title>
-        </ion-card-header>
-
         <ion-card-content *ngFor="let dato of datos">
-          <ion-label>
-            <h2>Nombre de la Enfermedad:</h2>
-          </ion-label>
-          <ion-label>{{ dato.comentario }}</ion-label>
-          <ion-label>
-            <h2>Nombre del Medicamento:</h2>
-          </ion-label>
-          <ion-label>{{ dato.medicamento }}</ion-label>
-          <ion-label>
-            <h2>Numero Caja:</h2>
-          </ion-label>
-          <ion-label>{{ dato.numerocaja }}</ion-label>
-          <ion-label>
-            <h2>Por cuántos Días:</h2>
-          </ion-label>
-          <ion-label>{{ dato.numerodias }}</ion-label>
-          <ion-label>
-            <h2>Cada cuánto tiempo:</h2>
-          </ion-label>
-          <ion-label>{{ dato.frecuencia }}</ion-label>
-          <ion-label>
-             <h2>Fecha y Hora de Inicio:</h2>
-          </ion-label>
-          <ion-label>{{ dato.fechainicio }} / {{ dato.horainicio }}</ion-label>
-          <ion-label>
-            <h2>Horario:</h2>
-          </ion-label>
-          <table border="1">
-            <thead>
-              <tr>
-                <th>Día</th>
-                <th>Fecha</th>
-                <th>Hora</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let horario of horarios">
-                <ng-container *ngIf="horario.idpacientemedicamento == dato.idpacientemedicamento">
-                  <td>{{ horario.contadordias }}</td>
-                  <td>{{ horario.fechaingesta }}</td>
-                  <td>{{ horario.horaingesto }}</td>
-                </ng-container>
-              </tr>
-            </tbody>
-          </table>
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Datos del Medicamento</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-label>Nombre de la Enfermedad:</ion-label>
+              <ion-label>{{ dato.comentario }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Nombre del Medicamento:</ion-label>
+              <ion-label>{{ dato.medicamento }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Numero Caja:</ion-label>
+              <ion-label>{{ dato.numerocaja }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Por cuántos Días:</ion-label>
+              <ion-label>{{ dato.numerodias }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Cada cuánto tiempo:</ion-label>
+              <ion-label>{{ dato.frecuencia }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Fecha y Hora de Inicio:</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>{{ dato.fechainicio }}</ion-label>
+              <ion-label>{{ dato.horainicio }}</ion-label>
+            </ion-item>
+          </ion-list>
+
+          <ion-list lines="none">
+            <ion-list-header>
+              <ion-label>Horario:</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Día</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let horario of horarios">
+                    <ng-container *ngIf="horario.idpacientemedicamento == dato.idpacientemedicamento">
+                      <td>{{ horario.contadordias }}</td>
+                      <td>{{ horario.fechaingesta }}</td>
+                      <td>{{ horario.horaingesto }}</td>
+                    </ng-container>
+                  </tr>
+                </tbody>
+              </table>
+            </ion-item>
+            <br>
+            <ion-item>
+              <ion-button expand="full" >
+                <ion-icon name="construct-outline" id="actualizar"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-list>
         </ion-card-content>
       </ion-card>
     </div>
   </div>
 </ion-content>
+<!--
+(click)="actualizarPaciente(dato.id)" -->

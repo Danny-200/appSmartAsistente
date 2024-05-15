@@ -1,6 +1,6 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Formulario Crear Nuevo Usuario</ion-title>
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar mode="ios">
+    <ion-title>Formulario Nuevo Usuario</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,29 +10,26 @@
       <div class="datos">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>Datos del Usuario</ion-card-title>
+            <ion-card-title>
+              <ion-icon name="person"></ion-icon>
+              Datos del Usuario
+            </ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <ion-label>
-              <h2>Cédula:</h2>
-            </ion-label>
-            <ion-input type="text" pattern="^[0-9]+" label-placement="floating" fill="outline" formControlName="cedulaU"></ion-input>
-            <ion-label>
-              <h2>Nombre:</h2>
-            </ion-label>
-            <ion-input type="text" label-placement="floating" fill="outline" formControlName="nombreU"></ion-input>
-            <ion-label>
-              <h2>Apellido:</h2>
-            </ion-label>
-            <ion-input type="text" label-placement="floating" fill="outline" formControlName="apellidoU"></ion-input>
-            <ion-label>
-              <h2>Alias:</h2>
-            </ion-label>
-            <ion-input type="text" label-placement="floating" fill="outline" formControlName="aliasU"></ion-input>
-            <ion-label>
-              <h2>Clave:</h2>
-            </ion-label>
-            <ion-input type="text" label-placement="floating" fill="outline" formControlName="claveU"></ion-input>
+            <ion-input type="text" label="Cédula:" pattern="^[0-9]+" label-placement="floating" fill="outlet"
+              placeholder="Ingresar Número de Cedula" formControlName="cedulaU" mode="md"></ion-input>
+            <br>
+            <ion-input type="text" label="Nombre:" label-placement="floating" fill="outlet"
+              placeholder="Ingresar el Nombre" formControlName="nombreU" mode="md"></ion-input>
+            <br>
+            <ion-input type="text" label="Apellido:" label-placement="floating" fill="outlet"
+              placeholder="Ingresar el Apellido" formControlName="apellidoU" mode="md"></ion-input>
+            <br>
+            <ion-input type="text" label="Alias:" label-placement="floating" fill="outlet" placeholder="Ingresar el Alias"
+              formControlName="aliasU" mode="md"></ion-input>
+            <br>
+            <ion-input type="password" label="Contraseña:" label-placement="floating" fill="outlet" value="password"
+              formControlName="claveU" mode="md"></ion-input>
           </ion-card-content>
         </ion-card>
       </div>

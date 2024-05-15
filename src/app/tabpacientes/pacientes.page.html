@@ -1,16 +1,58 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Listado de Horario - Pacientes</ion-title>
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar mode="ios">
+    <ion-title>Listado de Horario-Pacientes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">pacientes</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Paciente:</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid fixed>
+        <ion-row *ngFor="let dato of datos">
+          <ion-col size="6">
+            <ion-list>
+              <ion-item>
+                <ion-label>ID del Paciente:</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label id="nom">Nombre del Paciente:</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label>{{ dato.id }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>{{ dato.nombre }}</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let dato of datos">
+          <ion-col size="12">
+            <ion-buttons>
+              <ion-button expand="full" (click)="verPaciente(dato.id, dato.nombre)">
+                <ion-icon name="eye-outline" id="ver"></ion-icon>
+              </ion-button>
+              <ion-button expand="full" (click)="borrarPaciente(dato.id)">
+                <ion-icon name="trash-outline" id="eliminar"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label expand="full" color="danger" *ngIf="noPacientes">...No existen Pacientes Registrados</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <!--
   <form>
     <table>
       <thead>
@@ -40,10 +82,5 @@
         </tr>
       </tbody>
     </table>
-    
-    <ion-label expand="full" color="danger" *ngIf="noPacientes">...No existen Pacientes Registrados</ion-label>
-    
-    
-    
-  </form>
+  </form>-->
 </ion-content>
